@@ -7,18 +7,31 @@ var unique_data = unique(data); // filter out duplicates
 console.log('unique data:', unique_data);
 
 
-
 // Testing our own `test` module
 var test = require('./test');
 console.log('test: ', test);
 
-},{"./test":2,"uniq":3}],2:[function(require,module,exports){
+
+// Testing window object accessibility
+var w = require('./window');
+console.log('in main.js    : ', window);
+console.log('from window.js: ', w.win);
+},{"./test":2,"./window":3,"uniq":4}],2:[function(require,module,exports){
 var x = {
 	bal: 'alb'
 }
 
 exports.x = x;
 },{}],3:[function(require,module,exports){
+(function (global){
+// Also see interesting article about "mocking environment variables"
+// http://benclinkinbeard.com/posts/mocking-environment-variables-with-browserify/
+
+
+// Just return the `global` object, which in browserify, equals the window object
+exports.win = global;
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],4:[function(require,module,exports){
 "use strict"
 
 function unique_pred(list, compare) {

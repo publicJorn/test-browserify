@@ -6,7 +6,12 @@ var unique_data = unique(data); // filter out duplicates
 console.log('unique data:', unique_data);
 
 
-
 // Testing our own `test` module
 var test = require('./test');
 console.log('test: ', test);
+
+
+// Testing window object accessibility
+var w = require('./window');
+console.log('in main.js    : ', window);
+console.log('from window.js: ', w.win);
