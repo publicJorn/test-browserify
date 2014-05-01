@@ -22,23 +22,36 @@ module.exports = function (grunt) {
 			options: {
 				debug: true,
 			},
+
 			dev: {
 				src: ['js/main.js'],
-				dest: 'js/bundle.js'
+				dest: 'js/build/bundle.js'
 			},
-			production: {
-				options: {
-					debug: false
-				},
-				src: '<%= browserify.dev.src %>',
-				dest: 'js/bundle.js'
-			}
-		}
 
+			standalone: {
+				options: {
+					bundleOptions: {
+						standalone: 'sa'
+					}
+				},
+				files: {
+					'js/build/standalone.js': 'js/standalone.js'
+				}
+			}// ,
+
+			// production: {
+			// 	options: {
+			// 		debug: false
+			// 	},
+			// 	src: '<%= browserify.dev.src %>',
+			// 	dest: 'js/build/bundle.js'
+			// }
+		}
 	});
 
 	grunt.registerTask('serve', [
-		'browserify:dev',
+		'browserify',
+		'browserify',
 		'watch'
 	]);
 

@@ -9,14 +9,19 @@
 		<title>browserify test</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
-
-		<link rel="stylesheet" href="styles/main.css">
-		<style>
-		</style>
 	</head>
 	<body>
 		<p>see console</p>
 
-		<script src="js/bundle.js"></script>
+		<script src="js/build/bundle.js"></script>
+
+		<script src="js/build/standalone.js"></script>
+		<script>
+			// To make a module available as stand-alone script (attaches to window object) run:
+			// browserify standalone-src.js -d --s sa > standalone.js
+			// `sa` = will be appended to window object
+			// Also see: http://learnjs.io/blog/2014/02/06/creating-js-library-builds-with-browserify-and-other-npm-modules/
+			console.log('standalone: ', sa.fn());
+		</script>
 	</body>
 </html>

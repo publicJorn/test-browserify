@@ -15,3 +15,8 @@ console.log('test: ', test);
 var w = require('./window');
 console.log('in main.js    : ', window);
 console.log('from window.js: ', w.win);
+
+
+// Testing standalone as requirement
+var sa = require('./standalone');
+console.log('as requirement in main.js: ', sa.fn());
