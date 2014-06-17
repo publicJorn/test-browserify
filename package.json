@@ -9,5 +9,9 @@
   	"load-grunt-tasks": "~0.2",
   	"grunt-contrib-watch": "~0.5",
     "grunt-browserify": "~2.0"
-  }
+  },
+  "scripts": {
+		"build": "browserify browser.js -o static/bundle.js",
+		"watch": "watchify browser.js -o static/bundle.js --debug --verbose"
+	}
 }
